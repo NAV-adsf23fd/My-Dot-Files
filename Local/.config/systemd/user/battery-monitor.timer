@@ -1,0 +1,9 @@
+[Unit]
+Description=Chạy script giám sát pin mỗi phút một lần
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+
+[Install]
+WantedBy=timers.target

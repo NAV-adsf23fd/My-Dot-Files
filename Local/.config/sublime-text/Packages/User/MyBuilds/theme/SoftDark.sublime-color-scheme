@@ -1,0 +1,166 @@
+{
+  "name": "Soft Dark Lavender Full Color Fixed",
+
+  "globals": {
+    "background": "#23243A",
+    "foreground": "#F2E9D8",
+
+    "caret": "#F2C6B4",
+
+    "line_highlight": "#2B2D4A",
+
+    "selection": "#565A84",
+    "selection_border": "#7A7EAD",
+    "inactive_selection": "#31345C",
+
+    "gutter": "#23243A",
+    "gutter_foreground": "#7A7EAD",
+
+    "guide": "#3A3D66",
+    "active_guide": "#565A84",
+    "stack_guide": "#444873",
+
+    "highlight": "#4B4E74",
+    "find_highlight": "#E5C07B",
+
+    "brackets_foreground": "#C8A6C9",
+    "brackets_options": "stippled_underline"
+  },
+
+  "rules": [
+
+    /* ───── COMMENTS ───── */
+    {
+      "scope": "comment",
+      "foreground": "#7A7699",
+      "font_style": "italic"
+    },
+
+    /* ───── STRINGS (3 tones giữ nguyên đầy đủ) ───── */
+    {
+      "scope": "string",
+      "foreground": "#8FE388"
+    },
+    {
+      "scope": "string.quoted.double",
+      "foreground": "#6FD36A"
+    },
+    {
+      "scope": "string.quoted.single",
+      "foreground": "#4FB84F"
+    },
+
+    /* ───── NUMBERS ───── */
+    {
+      "scope": "constant.numeric",
+      "foreground": "#E5C07B"
+    },
+
+    /* ───── KEYWORDS (giữ tím chính) ───── */
+    {
+      "scope": "keyword",
+      "foreground": "#D6B3D2",
+      "font_style": "bold"
+    },
+    {
+      "scope": "storage",
+      "foreground": "#E8B7A8"
+    },
+
+    /* ───── FUNCTIONS (đầy đủ 3 lớp xanh) ───── */
+    {
+      "scope": "entity.name.function",
+      "foreground": "#61AFEF"
+    },
+    {
+      "scope": "support.function",
+      "foreground": "#4FA3D1"
+    },
+    {
+      "scope": "variable.function",
+      "foreground": "#7DCFFF"
+    },
+
+    /* ───── CLASSES / TYPES ───── */
+    {
+      "scope": "entity.name.class",
+      "foreground": "#C8A6C9"
+    },
+    {
+      "scope": "support.type",
+      "foreground": "#D6B3D2"
+    },
+
+    /* ───── VARIABLES ───── */
+    {
+      "scope": "variable",
+      "foreground": "#F2E9D8"
+    },
+    {
+      "scope": "variable.parameter",
+      "foreground": "#CFCBE6"
+    },
+
+    /* ───── CONSTANTS ───── */
+    {
+      "scope": "constant.language",
+      "foreground": "#F2C6B4"
+    },
+    {
+      "scope": "constant.other",
+      "foreground": "#E8B7A8"
+    },
+
+    /* ───── PUNCTUATION ───── */
+    {
+      "scope": "punctuation",
+      "foreground": "#A9A5C7"
+    },
+    {
+      "scope": "meta.brace",
+      "foreground": "#8A8FBD"
+    },
+
+    /* ───── OPERATORS ───── */
+    {
+      "scope": "keyword.operator",
+      "foreground": "#EDE4D3"
+    },
+
+    /* ───── ERRORS ───── */
+    {
+      "scope": "invalid",
+      "foreground": "#E06C75",
+      "background": "#2A2D52"
+    },
+
+    /* ───── MARKUP ───── */
+    {
+      "scope": "markup.heading",
+      "foreground": "#C8A6C9",
+      "font_style": "bold"
+    },
+    {
+      "scope": "markup.bold",
+      "foreground": "#F2E9D8",
+      "font_style": "bold"
+    },
+    {
+      "scope": "markup.italic",
+      "foreground": "#CFCBE6",
+      "font_style": "italic"
+    },
+    {
+      "scope": "markup.inserted",
+      "foreground": "#6FD36A"
+    },
+    {
+      "scope": "markup.deleted",
+      "foreground": "#C75B63"
+    },
+    {
+      "scope": "markup.changed",
+      "foreground": "#E5C07B"
+    }
+  ]
+}

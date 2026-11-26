@@ -1,0 +1,12 @@
+{
+	"theme": "Adaptive.sublime-theme",
+	"ignored_packages":
+	[
+		"Package Control",
+		"Vintage",
+	],
+	"index_files": false,
+	"font_size": 12,
+	"color_scheme": "SoftDark.sublime-color-scheme",
+	"font_face": "Adwaita Mono",
+}

@@ -1,0 +1,11 @@
+autosaves/
+backups/
+logs/
+shader_cache/
+vulkan/
+*.log
+*.bak
+Recordings/
+extensions/
+.running
+clipboard.txt

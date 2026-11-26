@@ -1,0 +1,6 @@
+[Unit]
+Description=Giám sát dung lượng pin khẩn cấp
+
+[Service]
+Type=oneshot
+ExecStart=%h/Applications/Config/MyScripts/Battery/check_battery.sh

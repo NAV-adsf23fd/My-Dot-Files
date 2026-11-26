@@ -1,0 +1,25 @@
+Terminal:st
+SublimeText:subl
+Chrome:google-chrome-stable --enable-features=VaapiVideoDecodeLinuxGL --ignore-gpu-blocklist --enable-zero-copy --disable-features=UseChromeOSDirectVideoDecoder
+Lf:st -e lf
+ScreenShot:sh -c "xfce4-screenshooter -r -s /tmp/shot.png && xclip -selection clipboard -t image/png -i /tmp/shot.png"
+GetImage:xfce4-screenshooter
+Fcitx5:fcitx5-configtool
+Projecting:arandr
+Pixelorama:~/Applications/Linux/Pixelorama/Pixelorama.x86_64
+ScreenRecorder:simplescreenrecorder
+Shotcut:~/Applications/Linux/Shotcut/shotcut-linux-x86_64-26.4.30.AppImage
+Anki:anki
+Nvim:st -e nvim
+CheckMyDisk:st -e sudo ~/Applications/Config/MyScripts/Disk/diskcheck.sh
+Obsidian:~/Applications/Linux/Obsidian/Obsidian-1.12.7.AppImage
+Krita:~/Applications/Linux/Krita/krita-5.2.11-x86_64.AppImage
+Setting:subl ~/Applications/Config/MyScripts/AppMenu/my_apps.txt
+OpenFile:subl ~/Applications/Config/MyScripts/OpenFile/openfile.sh
+Xephyr:~/Applications/Linux/Xephyr/run_nested_X_window.sh
+Reaper:SWELL_LOAD_GTK=0 /home/van/Applications/Linux/Reaper/reaper_linux_x86_64/REAPER/reaper
+Octave:cd ~/Downloads/linhtinh && octave --gui
+Emacs:emacs
+Magicavoxel:wine ~/Applications/Window/MagicaVoxel-0.99.7.2-win64/MagicaVoxel.exe
+WaterFox:~/Applications/Linux/WaterFox/waterfox/waterfox
+Private:~/Applications/Linux/WaterFox/waterfox/waterfox --private-window

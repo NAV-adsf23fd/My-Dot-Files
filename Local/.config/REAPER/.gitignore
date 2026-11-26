@@ -1,0 +1,20 @@
+*.bak
+Default_6.0.ReaperThemeZip
+Default_7.0.ReaperThemeZip
+reaper-vstplugins*.ini
+reaper-jsfx.ini
+reaper-recentfx.ini
+reaper-reginfo*.ini
+reaper-midihw.ini
+reaper-wndpos.ini
+reaper-install*
+UndoHist/
+PeakCache/
+Data/
+Effects/
+Scripts/Cockos/
+OSC/
+reaper-midihw-linux.ini
+reaper-fxtags.ini
+KeyMaps/DK keymap.ReaperKeyMap
+KeyMaps/German Keymap.ReaperKeyMap

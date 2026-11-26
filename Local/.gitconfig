@@ -1,0 +1,7 @@
+[user]
+	name = Nav
+	email = 215129125+NAV-adsf23fd@users.noreply.github.com
+[credential]
+	helper = store
+[core]
+	editor = nano

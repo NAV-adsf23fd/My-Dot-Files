@@ -1,0 +1,11 @@
+resourcecache.sqlite*
+*.log
+bundles/Krita_3_Default_Resources.bundle
+bundles/Krita_4_Default_Resources.bundle
+bundles/Krita_Artists_SeExpr_examples.bundle
+bundles/RGBA_brushes.bundle
+paintoppresets/[a-z])_*
+
+!paintoppresets/.gitkeep
+!brushes/.gitkeep
+!bundles/.gitkeep

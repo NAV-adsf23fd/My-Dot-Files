@@ -1,0 +1,6 @@
+[Unit]
+Description=Night curfew
+
+[Service]
+Type=oneshot
+ExecStart=%h/Applications/Config/MyScripts/Curfew/curfew.sh

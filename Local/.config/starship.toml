@@ -1,0 +1,38 @@
+add_newline = true
+
+format = """
+$conda\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$character"""
+
+[username]
+style_user = "bold #E8B7A8"
+style_root = "bold #E06C75"
+format = "[$user]($style) "
+
+[hostname]
+style = "bold #C8A6C9"
+format = "[@$hostname]($style) "
+
+[directory]
+style = "bold #E5C07B"
+format = "[$path]($style) "
+
+[git_branch]
+style = "bold #D6B3D2"
+format = "on [$branch]($style) "
+
+[git_status]
+style = "#E5C07B"
+
+[character]
+success_symbol = "[❯](bold #8FE388)"
+error_symbol = "[✗](bold #E06C75)"
+
+[conda]
+format = "[$environment]($style) "
+style = "bold green"
