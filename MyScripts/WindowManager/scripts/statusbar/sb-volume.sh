@@ -1,6 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -u
+source "$HOME/Applications/Config/MyScripts/Theme/colors.sh"
 
-case $BLOCK_BUTTON in
+
+case "${BLOCK_BUTTON:-}" in
     1)  pactl set-sink-mute @DEFAULT_SINK@ toggle ;;
     3)  pavucontrol ;; 
     4) 
@@ -18,7 +21,7 @@ vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]+(?=%)' | head -n 1)
 mute=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -Po 'yes')
 
 if [ "$mute" = "yes" ]; then
-    echo " ^c#E06C75^M^d^ " 
+    echo " ^c${DC3_1}^M^d^ " 
 else
-    echo "^c#7A7699^${vol}%^d^"
+    echo "^c${DC3_2}^${vol}%^d^"
 fi

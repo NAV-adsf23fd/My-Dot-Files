@@ -1,0 +1,73 @@
+/* 1. Nền và chữ tổng thể */
+window,
+.background,
+dialog,
+messagedialog,
+view,
+textview text,
+treeview.view,
+iconview,
+placessidebar,
+placessidebar list,
+headerbar,
+menubar,
+toolbar,
+actionbar,
+statusbar {
+    background-color: ${BACKGROUND};
+    color: ${COLOR15};
+}
+
+/* 2. Ô nhập liệu, nút bấm, thanh công cụ phụ */
+entry,
+button,
+combobox button,
+spinbutton,
+switch,
+notebook > header {
+    background-color: ${SUB_BACKGROUND};
+    color: ${COLOR15};
+    border: 1px solid ${SUB_HIGHLIGHT};
+    box-shadow: none;
+    background-image: none;
+}
+
+button:hover,
+entry:focus {
+    border-color: ${HIGHLIGHT};
+}
+
+/* 3. Mục đang chọn, menu chuột phải, popover */
+selection,
+*:selected,
+row:selected,
+menuitem:hover,
+modelbutton:hover {
+    background-color: ${SUB_BACKGROUND};
+    color: ${COLOR15};
+}
+
+popover,
+menu,
+tooltip {
+    background-color: ${SUB_BACKGROUND};
+    color: ${COLOR15};
+    border: 1px solid ${SUB_HIGHLIGHT};
+}
+
+/* 4. Thanh cuộn (Scrollbar) tối giản */
+scrollbar slider {
+    background-color: ${SUB_HIGHLIGHT};
+    border-radius: 0px;
+}
+
+scrollbar slider:hover {
+    background-color: ${HIGHLIGHT};
+}
+
+/* 5. Đường viền ngăn cách */
+separator,
+paned > separator {
+    background-color: ${SUB_BACKGROUND};
+    color: ${SUB_BACKGROUND};
+}

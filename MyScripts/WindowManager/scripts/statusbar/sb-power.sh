@@ -1,11 +1,14 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -u
+source "$HOME/Applications/Config/MyScripts/Theme/colors.sh"
+
 
 # File lưu trạng thái: 0=N, 1=S, 2=T, 3=R
 STATE_FILE="/tmp/sb_power_state"
 [ ! -f "$STATE_FILE" ] && echo 0 > "$STATE_FILE"
 state=$(cat "$STATE_FILE")
 
-case $BLOCK_BUTTON in
+case "${BLOCK_BUTTON:-}" in
     4) state=$(( (state + 1) % 4 )) ;; # Cuộn lên
     5) state=$(( (state - 1) % 4 )); [ $state -lt 0 ] && state=3 ;; # Cuộn xuống
     1) # Click trái
@@ -23,8 +26,8 @@ echo $state > "$STATE_FILE"
 
 # In ra màu tương ứng
 case $state in
-    0) echo "^c#7A7699^N^d^" ;; # Màu xám mờ cho None
-    1) echo "^c#F2E9D8^S^d^" ;; #  (Sleep)
-    2) echo "^c#E06C75^T^d^" ;; #  (Tắt)
-    3) echo "^c#8FE388^R^d^" ;; #  (Restart)
+    0) echo "^c${DC1_1}^N^d^" ;; # None
+    1) echo "^c${DC1_2}^S^d^" ;; # Sleep
+    2) echo "^c${DC1_3}^T^d^" ;; # Poweroff
+    3) echo "^c${DC1_4}^R^d^" ;; # Reboot
 esac

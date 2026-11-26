@@ -1,0 +1,30 @@
+static const char *colorname[] = {
+    /* 8 màu normal */
+    [0] = "${COLOR0}", /* black   */
+    [1] = "${COLOR1}", /* red     */
+    [2] = "${COLOR2}", /* green   */
+    [3] = "${COLOR3}", /* yellow  */
+    [4] = "${COLOR4}", /* blue    */
+    [5] = "${COLOR5}", /* magenta */
+    [6] = "${COLOR6}", /* cyan    */
+    [7] = "${COLOR7}", /* white   */
+
+    /* 8 màu bright */
+    [8]  = "${COLOR8}",  /* bright black   */
+    [9]  = "${COLOR9}",  /* bright red     */
+    [10] = "${COLOR10}", /* bright green   */
+    [11] = "${COLOR11}", /* bright yellow  */
+    [12] = "${COLOR12}", /* bright blue    */
+    [13] = "${COLOR13}", /* bright magenta */
+    [14] = "${COLOR14}", /* bright cyan    */
+    [15] = "${COLOR15}", /* bright white   */
+
+    [255] = 0,
+
+    /* Các màu hệ thống tự định nghĩa thêm */
+    [256] = "${ST_BG}",     /* background */
+    [257] = "${ST_FG}",     /* foreground */
+    [258] = "${ST_CURSOR}", /* cursor */
+    [259] = "${ST_SEL_BG}", /* selection background */
+    [260] = "${ST_SEL_FG}", /* selection foreground */
+};

@@ -23,7 +23,7 @@ fi
 case "$TARGET_LOWER" in
     # Web / HTML / Video / Audio / PDF
     http://*|https://*|*.html|*.htm|*.mp4|*.mkv|*.avi|*.mp3|*.wav|*.m4a|*.ogg|*.mov|*.pdf|*.doc|*.pptx)
-        exec "$BROWSER" "$TARGET" >/dev/null 2>&1
+        exec google-chrome-stable "$TARGET" >/dev/null 2>&1
         ;;
 
     # Ảnh

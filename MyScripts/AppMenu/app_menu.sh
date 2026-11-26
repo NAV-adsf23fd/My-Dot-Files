@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -u
+source "$HOME/Applications/Config/MyScripts/Theme/colors.sh"
 
 APP_FILE="$(dirname "$(readlink -f "$0")")/my_apps.txt"
 
@@ -7,10 +9,10 @@ APP_FILE="$(dirname "$(readlink -f "$0")")/my_apps.txt"
 CHOICE=$(cut -d':' -f1 "$APP_FILE" | grep -v '^$' | dmenu \
     -i \
     -p ">" \
-    -nb "#23243A" \
-    -nf "#D6B3D2" \
-    -sb "#D6B3D2" \
-    -sf "#23243A")
+    -nb "$BACKGROUND" \
+    -nf "$HIGHLIGHT" \
+    -sb "$HIGHLIGHT" \
+    -sf "$BACKGROUND")
 
 [ -z "$CHOICE" ] && exit 0
 

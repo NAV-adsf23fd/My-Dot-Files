@@ -1,3 +1,5 @@
+#include "theme.h"
+
 /* See LICENSE file for copyright and license details. */
 
 /*
@@ -95,36 +97,37 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 
-static const char *colorname[] = {
-    /* 8 màu normal */
-    [0] = "#2B2D4A", /* black   */
-    [1] = "#E06C75", /* red     */
-    [2] = "#4FB84F", /* green   */
-    [3] = "#E5C07B", /* yellow  */
-    [4] = "#61AFEF", /* blue    */
-    [5] = "#C8A6C9", /* magenta */
-    [6] = "#6FD36A", /* cyan    */
-    [7] = "#EAE6F8", /* white   */
+// These colors will be overided by theme.h
+// static const char *colorname[] = {
+//     /* 8 màu normal */
+//     [0] = "#2B2D4A", /* black   */
+//     [1] = "#E06C75", /* red     */
+//     [2] = "#4FB84F", /* green   */
+//     [3] = "#E5C07B", /* yellow  */
+//     [4] = "#61AFEF", /* blue    */
+//     [5] = "#C8A6C9", /* magenta */
+//     [6] = "#6FD36A", /* cyan    */
+//     [7] = "#EAE6F8", /* white   */
 
-    /* 8 màu bright */
-    [8]  = "#565A84", /* bright black   */
-    [9]  = "#C75B63", /* bright red     */
-    [10] = "#6FD36A", /* bright green   */
-    [11] = "#D9A85F", /* bright yellow  */
-    [12] = "#4FA3D1", /* bright blue    */
-    [13] = "#D6B3D2", /* bright magenta */
-    [14] = "#8FE388", /* bright cyan    */
-    [15] = "#F2E9D8", /* bright white   */
+//     /* 8 màu bright */
+//     [8]  = "#565A84", /* bright black   */
+//     [9]  = "#C75B63", /* bright red     */
+//     [10] = "#6FD36A", /* bright green   */
+//     [11] = "#D9A85F", /* bright yellow  */
+//     [12] = "#4FA3D1", /* bright blue    */
+//     [13] = "#D6B3D2", /* bright magenta */
+//     [14] = "#8FE388", /* bright cyan    */
+//     [15] = "#F2E9D8", /* bright white   */
 
-    [255] = 0,
+//     [255] = 0,
 
-    /* Các màu hệ thống tự định nghĩa thêm */
-    [256] = "#23243A", /* background */
-    [257] = "#EAE6F8", /* foreground */
-    [258] = "#E8B7A8", /* cursor */
-    [259] = "#4B4E74", /* selection background */
-    [260] = "#EAE6F8", /* selection foreground */
-};
+//     /* Các màu hệ thống tự định nghĩa thêm */
+//     [256] = "#23243A", /* background */
+//     [257] = "#EAE6F8", /* foreground */
+//     [258] = "#E8B7A8", /* cursor */
+//     [259] = "#4B4E74", /* selection background */
+//     [260] = "#EAE6F8", /* selection foreground */
+// };
 
 
 // OLD

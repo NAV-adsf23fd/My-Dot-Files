@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <X11/Xatom.h>
+#include "theme.h"
 
 // Hàm cấp phát một pixel màu từ tên màu (ví dụ: "green" hoặc "#00FF00")
 unsigned long get_color_pixel(Display *dpy, int screen, const char *color_name) {
@@ -98,11 +99,11 @@ int main(int argc, char *argv[]) {
     gc = XCreateGC(dpy, pmap, 0, &values);
 
  // Tô nền tùy chọn
-    XSetForeground(dpy, gc, get_color_pixel(dpy, screen, "#23243A")); // <--- THAY MÃ MÀU NỀN TẠI ĐÂY
+    XSetForeground(dpy, gc, get_color_pixel(dpy, screen, bg_color)); // <--- THAY MÃ MÀU NỀN TẠI ĐÂY
     XFillRectangle(dpy, pmap, gc, 0, 0, width, height);
 
     // Cấp màu xanh Matrix cho chữ
-    XSetForeground(dpy, gc, get_color_pixel(dpy, screen, "#D6B3D2"));
+    XSetForeground(dpy, gc, get_color_pixel(dpy, screen, fg_color));
 
     // --- FIX BADFONT: Tải font rõ ràng từ X Server ---
     XFontStruct *font_info = XLoadQueryFont(dpy, "fixed");

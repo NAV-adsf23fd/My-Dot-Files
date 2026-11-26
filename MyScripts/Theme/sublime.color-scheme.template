@@ -1,0 +1,142 @@
+{
+  "name": "My Dynamic Theme",
+
+  "globals": {
+    "background": "${BACKGROUND}",
+    "foreground": "${COLOR15}",
+
+    "caret": "${ST_CURSOR}",
+
+    "line_highlight": "${SUB_BACKGROUND}",
+
+    "selection": "${SUB_HIGHLIGHT}",
+    "selection_border": "${HIGHLIGHT}",
+    "inactive_selection": "${SUB_BACKGROUND}",
+
+    "gutter": "${BACKGROUND}",
+    "gutter_foreground": "${SUB_HIGHLIGHT}",
+
+    "guide": "${SUB_BACKGROUND}",
+    "active_guide": "${SUB_HIGHLIGHT}",
+    "stack_guide": "${SUB_BACKGROUND}",
+
+    "highlight": "${SUB_BACKGROUND}",
+    "find_highlight": "${COLOR11}",
+
+    "brackets_foreground": "${COLOR13}",
+    "brackets_options": "stippled_underline"
+  },
+
+  "rules": [
+    {
+      "scope": "comment",
+      "foreground": "${SUB_HIGHLIGHT}",
+      "font_style": "italic"
+    },
+    {
+      "scope": "string",
+      "foreground": "${COLOR10}"
+    },
+    {
+      "scope": "string.quoted.double",
+      "foreground": "${GREEN}"
+    },
+    {
+      "scope": "string.quoted.single",
+      "foreground": "${COLOR2}"
+    },
+    {
+      "scope": "constant.numeric",
+      "foreground": "${COLOR11}"
+    },
+    {
+      "scope": "keyword",
+      "foreground": "${COLOR13}",
+      "font_style": "bold"
+    },
+    {
+      "scope": "storage",
+      "foreground": "${COLOR9}"
+    },
+    {
+      "scope": "entity.name.function",
+      "foreground": "${COLOR12}"
+    },
+    {
+      "scope": "support.function",
+      "foreground": "${BLUE}"
+    },
+    {
+      "scope": "variable.function",
+      "foreground": "${COLOR14}"
+    },
+    {
+      "scope": "entity.name.class",
+      "foreground": "${COLOR5}"
+    },
+    {
+      "scope": "support.type",
+      "foreground": "${COLOR13}"
+    },
+    {
+      "scope": "variable",
+      "foreground": "${COLOR15}"
+    },
+    {
+      "scope": "variable.parameter",
+      "foreground": "${HIGHLIGHT}"
+    },
+    {
+      "scope": "constant.language",
+      "foreground": "${COLOR9}"
+    },
+    {
+      "scope": "constant.other",
+      "foreground": "${COLOR11}"
+    },
+    {
+      "scope": "punctuation",
+      "foreground": "${HIGHLIGHT}"
+    },
+    {
+      "scope": "meta.brace",
+      "foreground": "${SUB_HIGHLIGHT}"
+    },
+    {
+      "scope": "keyword.operator",
+      "foreground": "${COLOR15}"
+    },
+    {
+      "scope": "invalid",
+      "foreground": "${COLOR9}",
+      "background": "${SUB_BACKGROUND}"
+    },
+    {
+      "scope": "markup.heading",
+      "foreground": "${COLOR13}",
+      "font_style": "bold"
+    },
+    {
+      "scope": "markup.bold",
+      "foreground": "${COLOR15}",
+      "font_style": "bold"
+    },
+    {
+      "scope": "markup.italic",
+      "foreground": "${HIGHLIGHT}",
+      "font_style": "italic"
+    },
+    {
+      "scope": "markup.inserted",
+      "foreground": "${COLOR10}"
+    },
+    {
+      "scope": "markup.deleted",
+      "foreground": "${COLOR9}"
+    },
+    {
+      "scope": "markup.changed",
+      "foreground": "${COLOR11}"
+    }
+  ]
+}

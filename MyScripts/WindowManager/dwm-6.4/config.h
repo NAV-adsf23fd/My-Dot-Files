@@ -1,4 +1,5 @@
 #include <X11/keysym.h>
+#include "theme.h"
 
 /* See LICENSE file for copyright and license details. */
 
@@ -9,11 +10,14 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#23243A";
-static const char col_gray2[]       = "#23243A";
-static const char col_gray3[]       = "#7A7699";
-static const char col_gray4[]       = "#2B2D4A";
-static const char col_cyan[]        = "#D6B3D2";
+
+// These colors will be overided in theme.h
+// static const char col_gray1[]       = "#23243A";
+// static const char col_gray2[]       = "#23243A";
+// static const char col_gray3[]       = "#7A7699";
+// static const char col_gray4[]       = "#2B2D4A";
+// static const char col_cyan[]        = "#D6B3D2";
+
 static const char col_border_sel[]  = "#E5C07B"; // Màu viền cho cửa sổ đang chọn
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */

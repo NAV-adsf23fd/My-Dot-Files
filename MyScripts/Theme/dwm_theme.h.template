@@ -1,0 +1,6 @@
+/* Các biến màu mặc định của dwm */
+static const char col_gray1[] = "${BACKGROUND}";        // Nền bar bình thường
+static const char col_gray2[] = "${BACKGROUND}"; 		// Viền cửa sổ không active
+static const char col_gray3[] = "${SUB_HIGHLIGHT}";     // Chữ bar bình thường
+static const char col_gray4[] = "${BACKGROUND}";        // Chữ bar đang chọn
+static const char col_cyan[]  = "${HIGHLIGHT}";         // Nền tab đang chọn & viền active

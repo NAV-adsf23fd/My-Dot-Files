@@ -7,6 +7,6 @@
 	],
 	"index_files": false,
 	"font_size": 12,
-	"color_scheme": "SoftDark.sublime-color-scheme",
+	"color_scheme": "MyDynamicTheme.sublime-color-scheme",
 	"font_face": "Adwaita Mono",
 }

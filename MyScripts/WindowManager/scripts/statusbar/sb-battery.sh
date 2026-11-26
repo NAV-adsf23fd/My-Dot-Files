@@ -1,8 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -u
+source "$HOME/Applications/Config/MyScripts/Theme/colors.sh"
+
 
 STATE="/tmp/redshift_state"
 
-case $BLOCK_BUTTON in
+case "${BLOCK_BUTTON:-}" in
     1)
         if [ -f "$STATE" ]; then
             # đang bật → tắt (reset màu)
@@ -40,11 +43,11 @@ if [ -r "$BAT_PATH/capacity" ]; then
     status=$(cat "$BAT_PATH/status")
 
     if [ "$status" = "Charging" ]; then
-        echo "^c#4FB84F^${val}%^d^"
+        echo "^c${DC2_1}^${val}%^d^"
     elif [ "$val" -le 30 ]; then
-        echo "^c#E06C75^${val}%^d^"
+        echo "^c${DC2_2}^${val}%^d^"
     else
-        echo "^c#8FE388^${val}%^d^"
+        echo "^c${DC2_3}^${val}%^d^"
     fi
 else
     echo "No Battery"

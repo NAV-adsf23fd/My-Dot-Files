@@ -2227,13 +2227,26 @@ statustextwidth(char *stext) {
 	return w;
 }
 
+static int
+isvalidhex(const char *s) {
+	if (s[0] != '#') return 0;
+	for (int k = 1; k <= 6; k++) {
+		char c = s[k];
+		if (!((c >= '0' && c <= '9') ||
+		      (c >= 'a' && c <= 'f') ||
+		      (c >= 'A' && c <= 'F')))
+			return 0;
+	}
+	return 1;
+}
+
 int
 drawstatusbar(Monitor *m, int bh, char* stext) {
 	int ret, i, w, x, len;
 	short isCode = 0;
 	char *text, *p;
 
-	len = strlen(stext) + 1 ;
+	len = strlen(stext) + 1;
 	if (!(text = (char*) malloc(sizeof(char)*len))) die("malloc");
 	p = text;
 	memcpy(text, stext, len);
@@ -2257,37 +2270,51 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 			drw_text(drw, x, 0, w, bh, 0, text, 0);
 			x += w;
 
-			while (text[++i] != '^') {
-				if (text[i] == 'c') {
-					char buf[8];
-					memcpy(buf, (char*)text+i+1, 7);
-					buf[7] = '\0';
-					drw_clr_create(drw, &drw->scheme[ColFg], buf);
-					i += 7;
-				} else if (text[i] == 'b') {
-					char buf[8];
-					memcpy(buf, (char*)text+i+1, 7);
-					buf[7] = '\0';
-					drw_clr_create(drw, &drw->scheme[ColBg], buf);
-					i += 7;
+			while (text[++i] && text[i] != '^') {
+				if (text[i] == 'c' || text[i] == 'b') {
+					char type = text[i];
+					if (strlen(text + i + 1) >= 7 && isvalidhex(text + i + 1)) {
+						char buf[8];
+						memcpy(buf, (char*)text + i + 1, 7);
+						buf[7] = '\0';
+						drw_clr_create(drw, &drw->scheme[type == 'c' ? ColFg : ColBg], buf);
+						i += 7;
+					} else {
+						while (text[i+1] && text[i+1] != '^')
+							i++;
+					}
 				} else if (text[i] == 'd') {
 					drw->scheme[ColFg] = scheme[SchemeNorm][ColFg];
 					drw->scheme[ColBg] = scheme[SchemeNorm][ColBg];
 				} else if (text[i] == 'r') {
-					int rx = atoi(text + ++i);
-					while (text[++i] != ',');
-					int ry = atoi(text + ++i);
-					while (text[++i] != ',');
-					int rw = atoi(text + ++i);
-					while (text[++i] != ',');
-					int rh = atoi(text + ++i);
-					drw_rect(drw, rx + x, ry, rw, rh, 1, 0);
+					int commas = 0, start = i + 1;
+					while (text[i+1] && text[i+1] != '^') {
+						i++;
+						if (text[i] == ',') commas++;
+					}
+					if (commas == 3) {
+						char *rptr = text + start;
+						int rx = atoi(rptr);
+						while (*rptr++ != ',');
+						int ry = atoi(rptr);
+						while (*rptr++ != ',');
+						int rw = atoi(rptr);
+						while (*rptr++ != ',');
+						int rh = atoi(rptr);
+						drw_rect(drw, rx + x, ry, rw, rh, 1, 0);
+					}
 				} else if (text[i] == 'f') {
 					x += atoi(text + ++i);
+					while (text[i+1] && text[i+1] != '^')
+						i++;
+				} else {
+					while (text[i+1] && text[i+1] != '^')
+						i++;
 				}
 			}
+			if (!text[i]) break;
 			text = text + i + 1;
-			i=-1;
+			i = -1;
 			isCode = 0;
 		} else if ((unsigned char)text[i] < ' ') {
 			text[i] = '\0';
@@ -2308,6 +2335,7 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 	free(p);
 	return ret;
 }
+
 
 
 

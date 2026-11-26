@@ -1,0 +1,51 @@
+{
+  "rules": [
+    {
+      "class": "sidebar_container",
+      "layer0.tint": "${BACKGROUND}",
+      "layer0.opacity": 1.0
+    },
+    {
+      "class": "sidebar_tree",
+      "layer0.tint": "${BACKGROUND}",
+      "layer0.opacity": 1.0
+    },
+    {
+      "class": "tabset_control",
+      "layer0.tint": "${BACKGROUND}",
+      "layer0.opacity": 1.0
+    },
+    {
+      "class": "tab_control",
+      "layer0.tint": "${BACKGROUND}",
+      "layer0.opacity": 1.0,
+      "layer1.opacity": 0.0
+    },
+    {
+      "class": "tab_control",
+      "attributes": ["selected"],
+      "layer0.tint": "${SUB_BACKGROUND}",
+      "layer0.opacity": 1.0,
+      "layer1.tint": "${HIGHLIGHT}",
+      "layer1.opacity": 1.0,
+      "layer1.draw_center": false,
+      "layer1.inner_margin": [0, 0, 0, 2]
+    },
+    {
+      "class": "tab_label",
+      "parents": [{"class": "tab_control"}],
+      "fg": "${SUB_HIGHLIGHT}"
+    },
+    {
+      "class": "tab_label",
+      "parents": [{"class": "tab_control", "attributes": ["selected"]}],
+      "fg": "${COLOR15}",
+      "font.bold": true
+    },
+    {
+      "class": "status_bar",
+      "layer0.tint": "${BACKGROUND}",
+      "layer0.opacity": 1.0
+    }
+  ]
+}
