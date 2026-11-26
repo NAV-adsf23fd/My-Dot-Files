@@ -1,3 +1,14 @@
+@define-color accent_bg_color #3d3d3d;
+@define-color theme_selected_bg_color #3d3d3d;
+@define-color theme_selected_fg_color #d4d4d4;
+/* Ghi đè biến màu accent của Catppuccin/Libadwaita */
+@define-color accent_bg_color #3d3d3d;
+@define-color accent_color #d4d4d4;
+@define-color theme_selected_bg_color #3d3d3d;
+@define-color theme_selected_fg_color #d4d4d4;
+@define-color selected_bg_color #3d3d3d;
+@define-color selected_fg_color #d4d4d4;
+
 /* 1. Nền và chữ tổng thể */
 window,
 .background,
@@ -15,7 +26,7 @@ toolbar,
 actionbar,
 statusbar {
     background-color: #000000;
-    color: #a1a1a1;
+    color: #d4d4d4;
 }
 
 /* 2. Ô nhập liệu, nút bấm, thanh công cụ phụ */
@@ -25,49 +36,113 @@ combobox button,
 spinbutton,
 switch,
 notebook > header {
-    background-color: #242424;
-    color: #a1a1a1;
-    border: 1px solid #787878;
+    background-color: #262626;
+    color: #d4d4d4;
+    border: 1px solid #858585;
     box-shadow: none;
     background-image: none;
 }
 
 button:hover,
 entry:focus {
-    border-color: #959595;
+    border-color: #b5b5b5;
 }
 
-/* 3. Mục đang chọn, menu chuột phải, popover */
+/* 3. Mục đang chọn, text selection, menu chuột phải, popover */
 selection,
+entry selection,
+textview selection,
+text selection,
+label selection,
 *:selected,
+*:selected:focus,
 row:selected,
 menuitem:hover,
 modelbutton:hover {
-    background-color: #242424;
-    color: #a1a1a1;
+    background-color: #74a3a3;
+    color: #d4d4d4;
 }
 
 popover,
 menu,
 tooltip {
-    background-color: #242424;
-    color: #a1a1a1;
-    border: 1px solid #787878;
+    background-color: #262626;
+    color: #d4d4d4;
+    border: 1px solid #858585;
 }
 
 /* 4. Thanh cuộn (Scrollbar) tối giản */
 scrollbar slider {
-    background-color: #787878;
+    background-color: #858585;
     border-radius: 0px;
 }
 
 scrollbar slider:hover {
-    background-color: #959595;
+    background-color: #b5b5b5;
 }
 
 /* 5. Đường viền ngăn cách */
 separator,
 paned > separator {
-    background-color: #242424;
-    color: #242424;
+    background-color: #262626;
+    color: #262626;
 }
+
+/* 6. Ghi đè màu tím của theme Catppuccin trên thanh đường dẫn (Path Bar) */
+filechooser .path-bar button,
+filechooser .path-bar-toggle,
+pathbar > button,
+.path-bar > button {
+    background-color: #262626;
+    background-image: none;
+    color: #d4d4d4;
+    border: 1px solid #858585;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* Xử lý trạng thái khi thư mục đang được chọn (active/checked) */
+filechooser .path-bar button:checked,
+filechooser .path-bar button:active,
+filechooser .path-bar-toggle:checked,
+pathbar > button:checked,
+pathbar > button:active,
+.path-bar > button:checked {
+    background-color: #3d3d3d;
+    color: #b5b5b5; /* Hoặc COLOR15 nếu muốn chữ sáng hơn */
+    border-color: #b5b5b5;
+}
+
+/* Hiệu ứng hover */
+filechooser .path-bar button:hover,
+pathbar > button:hover,
+.path-bar > button:hover {
+    background-color: #3d3d3d;
+    border-color: #b5b5b5;
+}
+
+/* 7. Đập tan màu tím trên thanh đường dẫn File Chooser */
+filechooser pathbar button,
+filechooser .path-bar button,
+pathbar > button,
+.path-bar > button,
+.pathbar > button,
+filechooser button:checked,
+filechooser button:active {
+    background-color: #3d3d3d !important;
+    background-image: none !important;
+    color: #d4d4d4 !important;
+    border-color: #858585 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* Đề phòng app dùng dropdown/menubutton thay cho pathbar (GTK4) */
+filechooser menubutton > button:checked,
+filechooser dropdown > button:checked {
+    background-color: #3d3d3d !important;
+    background-image: none !important;
+    color: #d4d4d4 !important;
+}
+
+window { background-color: red !important; }

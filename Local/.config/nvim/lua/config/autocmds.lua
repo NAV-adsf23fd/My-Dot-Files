@@ -41,3 +41,10 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "VeryLazy",
   callback = fix_snacks_border,
 })
+
+
+vim.api.nvim_create_autocmd("FocusGained", {
+  callback = function()
+    require("my_theme").setup()
+  end,
+})

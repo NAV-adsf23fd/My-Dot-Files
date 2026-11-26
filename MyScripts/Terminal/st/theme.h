@@ -1,30 +1,30 @@
 static const char *colorname[] = {
     /* 8 màu normal */
-    [0] = "#242424", /* black   */
-    [1] = "#ad7878", /* red     */
-    [2] = "#76a170", /* green   */
-    [3] = "#91966d", /* yellow  */
-    [4] = "#6e9494", /* blue    */
-    [5] = "#9e7c9b", /* magenta */
-    [6] = "#6f9c92", /* cyan    */
-    [7] = "#959595", /* white   */
+    [0] = "#262626", /* black   */
+    [1] = "#a87474", /* red     */
+    [2] = "#88bf80", /* green   */
+    [3] = "#a8b078", /* yellow  */
+    [4] = "#74a3a3", /* blue    */
+    [5] = "#9e7a9a", /* magenta */
+    [6] = "#78ab9f", /* cyan    */
+    [7] = "#b5b5b5", /* white   */
 
     /* 8 màu bright */
-    [8]  = "#787878",  /* bright black   */
-    [9]  = "#bd8888",  /* bright red     */
-    [10] = "#83ad7d", /* bright green   */
-    [11] = "#9ca176", /* bright yellow  */
-    [12] = "#79a1a1", /* bright blue    */
-    [13] = "#ab88a8", /* bright magenta */
-    [14] = "#7ba89e", /* bright cyan    */
-    [15] = "#a1a1a1", /* bright white   */
+    [8]  = "#858585",  /* bright black   */
+    [9]  = "#c79191",  /* bright red     */
+    [10] = "#a6d99e", /* bright green   */
+    [11] = "#c7cf95", /* bright yellow  */
+    [12] = "#91c2c2", /* bright blue    */
+    [13] = "#bd97b8", /* bright magenta */
+    [14] = "#95c9bd", /* bright cyan    */
+    [15] = "#d4d4d4", /* bright white   */
 
     [255] = 0,
 
     /* Các màu hệ thống tự định nghĩa thêm */
     [256] = "#000000",     /* background */
-    [257] = "#959595",     /* foreground */
-    [258] = "#959595", /* cursor */
-    [259] = "#242424", /* selection background */
-    [260] = "#a1a1a1", /* selection foreground */
+    [257] = "#b5b5b5",     /* foreground */
+    [258] = "#b5b5b5", /* cursor */
+    [259] = "#262626", /* selection background */
+    [260] = "#d4d4d4", /* selection foreground */
 };

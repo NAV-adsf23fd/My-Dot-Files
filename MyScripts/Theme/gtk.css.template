@@ -1,3 +1,14 @@
+@define-color accent_bg_color ${SELECTION_BG};
+@define-color theme_selected_bg_color ${SELECTION_BG};
+@define-color theme_selected_fg_color ${COLOR15};
+/* Ghi đè biến màu accent của Catppuccin/Libadwaita */
+@define-color accent_bg_color ${SELECTION_BG};
+@define-color accent_color ${COLOR15};
+@define-color theme_selected_bg_color ${SELECTION_BG};
+@define-color theme_selected_fg_color ${COLOR15};
+@define-color selected_bg_color ${SELECTION_BG};
+@define-color selected_fg_color ${COLOR15};
+
 /* 1. Nền và chữ tổng thể */
 window,
 .background,
@@ -37,13 +48,18 @@ entry:focus {
     border-color: ${HIGHLIGHT};
 }
 
-/* 3. Mục đang chọn, menu chuột phải, popover */
+/* 3. Mục đang chọn, text selection, menu chuột phải, popover */
 selection,
+entry selection,
+textview selection,
+text selection,
+label selection,
 *:selected,
+*:selected:focus,
 row:selected,
 menuitem:hover,
 modelbutton:hover {
-    background-color: ${SUB_BACKGROUND};
+    background-color: ${BLUE};
     color: ${COLOR15};
 }
 
@@ -70,4 +86,37 @@ separator,
 paned > separator {
     background-color: ${SUB_BACKGROUND};
     color: ${SUB_BACKGROUND};
+}
+
+/* 6. Ghi đè màu tím của theme Catppuccin trên thanh đường dẫn (Path Bar) */
+filechooser .path-bar button,
+filechooser .path-bar-toggle,
+pathbar > button,
+.path-bar > button {
+    background-color: ${SUB_BACKGROUND};
+    background-image: none;
+    color: ${COLOR15};
+    border: 1px solid ${SUB_HIGHLIGHT};
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* Xử lý trạng thái khi thư mục đang được chọn (active/checked) */
+filechooser .path-bar button:checked,
+filechooser .path-bar button:active,
+filechooser .path-bar-toggle:checked,
+pathbar > button:checked,
+pathbar > button:active,
+.path-bar > button:checked {
+    background-color: ${SELECTION_BG};
+    color: ${HIGHLIGHT}; /* Hoặc COLOR15 nếu muốn chữ sáng hơn */
+    border-color: ${HIGHLIGHT};
+}
+
+/* Hiệu ứng hover */
+filechooser .path-bar button:hover,
+pathbar > button:hover,
+.path-bar > button:hover {
+    background-color: ${SELECTION_BG};
+    border-color: ${HIGHLIGHT};
 }
