@@ -15,7 +15,7 @@ toolbar,
 actionbar,
 statusbar {
     background-color: #000000;
-    color: #a3a3a3;
+    color: #a1a1a1;
 }
 
 /* 2. Ô nhập liệu, nút bấm, thanh công cụ phụ */
@@ -26,15 +26,15 @@ spinbutton,
 switch,
 notebook > header {
     background-color: #242424;
-    color: #a3a3a3;
-    border: 1px solid #636363;
+    color: #a1a1a1;
+    border: 1px solid #787878;
     box-shadow: none;
     background-image: none;
 }
 
 button:hover,
 entry:focus {
-    border-color: #7a7a7a;
+    border-color: #959595;
 }
 
 /* 3. Mục đang chọn, menu chuột phải, popover */
@@ -44,25 +44,25 @@ row:selected,
 menuitem:hover,
 modelbutton:hover {
     background-color: #242424;
-    color: #a3a3a3;
+    color: #a1a1a1;
 }
 
 popover,
 menu,
 tooltip {
     background-color: #242424;
-    color: #a3a3a3;
-    border: 1px solid #636363;
+    color: #a1a1a1;
+    border: 1px solid #787878;
 }
 
 /* 4. Thanh cuộn (Scrollbar) tối giản */
 scrollbar slider {
-    background-color: #636363;
+    background-color: #787878;
     border-radius: 0px;
 }
 
 scrollbar slider:hover {
-    background-color: #7a7a7a;
+    background-color: #959595;
 }
 
 /* 5. Đường viền ngăn cách */
