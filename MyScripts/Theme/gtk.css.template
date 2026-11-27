@@ -1,13 +1,12 @@
-@define-color accent_bg_color ${SELECTION_BG};
-@define-color theme_selected_bg_color ${SELECTION_BG};
-@define-color theme_selected_fg_color ${COLOR15};
-/* Ghi đè biến màu accent của Catppuccin/Libadwaita */
-@define-color accent_bg_color ${SELECTION_BG};
-@define-color accent_color ${COLOR15};
-@define-color theme_selected_bg_color ${SELECTION_BG};
-@define-color theme_selected_fg_color ${COLOR15};
-@define-color selected_bg_color ${SELECTION_BG};
-@define-color selected_fg_color ${COLOR15};
+/* 0. Định nghĩa biến màu chuẩn cho GTK3, Libadwaita và Trình duyệt Web */
+@define-color accent_bg_color ${SUB_HIGHLIGHT};
+@define-color accent_color ${BACKGROUND};
+@define-color theme_selected_bg_color ${SUB_HIGHLIGHT};
+@define-color theme_selected_fg_color ${BACKGROUND};
+@define-color selected_bg_color ${SUB_HIGHLIGHT};
+@define-color selected_fg_color ${BACKGROUND};
+@define-color Highlight ${SUB_HIGHLIGHT};
+@define-color HighlightText ${BACKGROUND};
 
 /* 1. Nền và chữ tổng thể */
 window,
@@ -16,7 +15,6 @@ dialog,
 messagedialog,
 view,
 textview text,
-treeview.view,
 iconview,
 placessidebar,
 placessidebar list,
@@ -26,7 +24,17 @@ toolbar,
 actionbar,
 statusbar {
     background-color: ${BACKGROUND};
-    color: ${COLOR15};
+    color: ${HIGHLIGHT};
+}
+
+/* Nền danh sách file bình thường (kể cả khi mất focus) */
+treeview.view,
+treeview.view:backdrop {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: ${BACKGROUND};
+    color: ${HIGHLIGHT};
 }
 
 /* 2. Ô nhập liệu, nút bấm, thanh công cụ phụ */
@@ -36,87 +44,190 @@ combobox button,
 spinbutton,
 switch,
 notebook > header {
-    background-color: ${SUB_BACKGROUND};
-    color: ${COLOR15};
-    border: 1px solid ${SUB_HIGHLIGHT};
+    background-color: ${BACKGROUND};
+    color: ${SUB_HIGHLIGHT};
+    border: 1px solid ${BACKGROUND};
     box-shadow: none;
     background-image: none;
 }
 
 button:hover,
 entry:focus {
-    border-color: ${HIGHLIGHT};
+    border-color: ${SUB_HIGHLIGHT};
 }
 
-/* 3. Mục đang chọn, text selection, menu chuột phải, popover */
+/* Cố định thanh tiêu đề cột (Name, Size, Modified) tránh lệch tọa độ chuột */
+filechooser treeview.view header button,
+treeview.view header button {
+    background-color: ${BACKGROUND};
+    color: ${SUB_HIGHLIGHT};
+    border: none;
+    border-bottom: 1px solid ${SUB_BACKGROUND};
+    border-right: 1px solid ${SUB_BACKGROUND};
+    border-radius: 0px;
+    padding: 4px 8px;
+    margin: 0px;
+    box-shadow: none;
+    outline: none;
+}
+
+filechooser treeview.view header button:hover,
+treeview.view header button:hover,
+treeview.view header button:focus {
+    background-color: ${SUB_BACKGROUND};
+    color: ${HIGHLIGHT};
+    border: none;
+    border-bottom: 1px solid ${SUB_BACKGROUND};
+    border-right: 1px solid ${SUB_BACKGROUND};
+    box-shadow: none;
+    outline: none;
+}
+
+/* 3. Bôi đen văn bản (Text Selection) & Menu Popover */
 selection,
 entry selection,
 textview selection,
 text selection,
 label selection,
-*:selected,
-*:selected:focus,
-row:selected,
 menuitem:hover,
 modelbutton:hover {
-    background-color: ${BLUE};
-    color: ${COLOR15};
+    background-color: ${SUB_HIGHLIGHT};
+    color: ${BACKGROUND};
 }
 
 popover,
 menu,
 tooltip {
-    background-color: ${SUB_BACKGROUND};
-    color: ${COLOR15};
+    background-color: ${BACKGROUND};
+    color: ${SUB_HIGHLIGHT};
+    border: 1px solid ${BACKGROUND};
+}
+
+/* Highlight khi hover trong danh sách gợi ý Ctrl + L và Sidebar */
+popover row:hover,
+popover list row:hover,
+popover treeview.view:hover,
+window.popup treeview.view:hover,
+window.popup row:hover,
+placessidebar row:hover,
+treeview.view:hover {
+    background-color: ${SUB_HIGHLIGHT};
+    color: ${BACKGROUND};
+}
+
+/* 4. Chọn 1 file, chọn NHIỀU file (Ctrl+Click / kéo chuột) và mất focus */
+filechooser treeview.view:selected,
+filechooser treeview.view:selected:focus,
+filechooser treeview.view:selected:backdrop,
+treeview.view:selected,
+treeview.view:selected:focus,
+treeview.view:selected:backdrop,
+treeview.view row:selected,
+treeview.view cell:selected,
+row:selected,
+row:selected:focus,
+row:selected:backdrop,
+iconview:selected,
+iconview cell:selected {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: ${SUB_HIGHLIGHT};
+    color: ${BACKGROUND};
+}
+
+/* Đảm bảo chữ bên trong dòng đang chọn hoặc hover không bị tối */
+row:selected label,
+row:hover label,
+popover row:hover label {
+    background-color: transparent;
+    color: ${BACKGROUND};
+}
+
+/* 5. Khung chữ nhật khi kéo chuột chọn nhiều file (Rubberband) */
+rubberband,
+.rubberband,
+.view rubberband,
+treeview.view rubberband,
+iconview rubberband,
+filechooser rubberband,
+scrolledwindow rubberband {
+    background-color: alpha(${SUB_HIGHLIGHT}, 0.25);
     border: 1px solid ${SUB_HIGHLIGHT};
 }
 
-/* 4. Thanh cuộn (Scrollbar) tối giản */
+/* 6. Thanh cuộn (Scrollbar) và đường ngăn cách */
 scrollbar slider {
-    background-color: ${SUB_HIGHLIGHT};
+    background-color: ${SUB_BACKGROUND};
     border-radius: 0px;
 }
 
 scrollbar slider:hover {
-    background-color: ${HIGHLIGHT};
+    background-color: ${SUB_HIGHLIGHT};
 }
 
-/* 5. Đường viền ngăn cách */
 separator,
 paned > separator {
-    background-color: ${SUB_BACKGROUND};
-    color: ${SUB_BACKGROUND};
+    background-color: ${BACKGROUND};
+    color: ${BACKGROUND};
 }
 
-/* 6. Ghi đè màu tím của theme Catppuccin trên thanh đường dẫn (Path Bar) */
+/* 7. Thanh Header Stack & Path Bar */
+dialog.background filechooser box stack,
+dialog.background filechooser box stack > box,
+window.background filechooser box stack,
+window.background filechooser box stack > box {
+    background-color: ${BACKGROUND};
+    background-image: none;
+    box-shadow: none;
+    color: ${HIGHLIGHT};
+}
+
+dialog.background filechooser stack pathbar > button,
+window.background filechooser stack pathbar > button,
 filechooser .path-bar button,
-filechooser .path-bar-toggle,
-pathbar > button,
-.path-bar > button {
-    background-color: ${SUB_BACKGROUND};
+pathbar > button {
+    background-color: ${BACKGROUND};
     background-image: none;
     color: ${COLOR15};
-    border: 1px solid ${SUB_HIGHLIGHT};
+    border: 1px solid ${BACKGROUND};
     box-shadow: none;
     text-shadow: none;
 }
 
-/* Xử lý trạng thái khi thư mục đang được chọn (active/checked) */
+/* Thư mục hiện tại (pwd) đang mở: nền sáng, chữ tối tương phản */
+dialog.background filechooser stack pathbar > button:checked,
+window.background filechooser stack pathbar > button:checked,
 filechooser .path-bar button:checked,
-filechooser .path-bar button:active,
-filechooser .path-bar-toggle:checked,
-pathbar > button:checked,
-pathbar > button:active,
-.path-bar > button:checked {
-    background-color: ${SELECTION_BG};
-    color: ${HIGHLIGHT}; /* Hoặc COLOR15 nếu muốn chữ sáng hơn */
-    border-color: ${HIGHLIGHT};
+pathbar > button:checked {
+    background-color: ${SUB_HIGHLIGHT};
+    color: ${BACKGROUND};
+    border: 1px solid ${SUB_HIGHLIGHT};
 }
 
-/* Hiệu ứng hover */
+dialog.background filechooser stack pathbar > button:checked label,
+window.background filechooser stack pathbar > button:checked label,
+pathbar > button:checked label {
+    background-color: transparent;
+    color: ${BACKGROUND};
+}
+
+/* Hover trên Path Bar */
+dialog.background filechooser stack pathbar > button:hover,
+window.background filechooser stack pathbar > button:hover,
 filechooser .path-bar button:hover,
-pathbar > button:hover,
-.path-bar > button:hover {
-    background-color: ${SELECTION_BG};
-    border-color: ${HIGHLIGHT};
+pathbar > button:hover {
+    background-color: ${HIGHLIGHT};
+    color: ${BACKGROUND};
+    border: 1px solid ${HIGHLIGHT};
+}
+
+dialog.background filechooser stack pathbar > button:hover label,
+dialog.background filechooser stack pathbar > button:hover image,
+window.background filechooser stack pathbar > button:hover label,
+window.background filechooser stack pathbar > button:hover image,
+pathbar > button:hover label,
+pathbar > button:hover image {
+    background-color: transparent;
+    color: ${BACKGROUND};
 }

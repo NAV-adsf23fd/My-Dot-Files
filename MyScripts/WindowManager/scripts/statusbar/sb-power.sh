@@ -13,12 +13,24 @@ case "${BLOCK_BUTTON:-}" in
     5) state=$(( (state - 1) % 4 )); [ $state -lt 0 ] && state=3 ;; # Cuộn xuống
     1) # Click trái
        case $state in
-           1) systemctl suspend ;;
-           2) systemctl poweroff ;;
-           3) systemctl reboot ;;
+           1)
+              echo 0 > "$STATE_FILE" # Reset về None 
+              systemctl suspend
+              ;;
+           2)
+              echo 0 > "$STATE_FILE"
+              killall -q picom dwmblocks
+              systemctl poweroff
+              ;;
+           3)
+              echo 0 > "$STATE_FILE"
+              killall -q picom dwmblocks
+              systemctl reboot
+              ;;
        esac
-       state=0 # Reset về N sau khi click (tránh lần sau click nhầm)
+       state=0 # Reset về None 
        ;;
+
 esac
 
 # Lưu lại trạng thái mới

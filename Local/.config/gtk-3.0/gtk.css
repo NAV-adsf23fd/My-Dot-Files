@@ -1,13 +1,12 @@
-@define-color accent_bg_color #3d3d3d;
-@define-color theme_selected_bg_color #3d3d3d;
-@define-color theme_selected_fg_color #d4d4d4;
-/* Ghi đè biến màu accent của Catppuccin/Libadwaita */
-@define-color accent_bg_color #3d3d3d;
-@define-color accent_color #d4d4d4;
-@define-color theme_selected_bg_color #3d3d3d;
-@define-color theme_selected_fg_color #d4d4d4;
-@define-color selected_bg_color #3d3d3d;
-@define-color selected_fg_color #d4d4d4;
+/* 0. Định nghĩa biến màu chuẩn cho GTK3, Libadwaita và Trình duyệt Web */
+@define-color accent_bg_color #858585;
+@define-color accent_color #000000;
+@define-color theme_selected_bg_color #858585;
+@define-color theme_selected_fg_color #000000;
+@define-color selected_bg_color #858585;
+@define-color selected_fg_color #000000;
+@define-color Highlight #858585;
+@define-color HighlightText #000000;
 
 /* 1. Nền và chữ tổng thể */
 window,
@@ -16,7 +15,6 @@ dialog,
 messagedialog,
 view,
 textview text,
-treeview.view,
 iconview,
 placessidebar,
 placessidebar list,
@@ -26,7 +24,17 @@ toolbar,
 actionbar,
 statusbar {
     background-color: #000000;
-    color: #d4d4d4;
+    color: #b5b5b5;
+}
+
+/* Nền danh sách file bình thường (kể cả khi mất focus) */
+treeview.view,
+treeview.view:backdrop {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: #000000;
+    color: #b5b5b5;
 }
 
 /* 2. Ô nhập liệu, nút bấm, thanh công cụ phụ */
@@ -36,113 +44,190 @@ combobox button,
 spinbutton,
 switch,
 notebook > header {
-    background-color: #262626;
-    color: #d4d4d4;
-    border: 1px solid #858585;
+    background-color: #000000;
+    color: #858585;
+    border: 1px solid #000000;
     box-shadow: none;
     background-image: none;
 }
 
 button:hover,
 entry:focus {
-    border-color: #b5b5b5;
+    border-color: #858585;
 }
 
-/* 3. Mục đang chọn, text selection, menu chuột phải, popover */
+/* Cố định thanh tiêu đề cột (Name, Size, Modified) tránh lệch tọa độ chuột */
+filechooser treeview.view header button,
+treeview.view header button {
+    background-color: #000000;
+    color: #858585;
+    border: none;
+    border-bottom: 1px solid #262626;
+    border-right: 1px solid #262626;
+    border-radius: 0px;
+    padding: 4px 8px;
+    margin: 0px;
+    box-shadow: none;
+    outline: none;
+}
+
+filechooser treeview.view header button:hover,
+treeview.view header button:hover,
+treeview.view header button:focus {
+    background-color: #262626;
+    color: #b5b5b5;
+    border: none;
+    border-bottom: 1px solid #262626;
+    border-right: 1px solid #262626;
+    box-shadow: none;
+    outline: none;
+}
+
+/* 3. Bôi đen văn bản (Text Selection) & Menu Popover */
 selection,
 entry selection,
 textview selection,
 text selection,
 label selection,
-*:selected,
-*:selected:focus,
-row:selected,
 menuitem:hover,
 modelbutton:hover {
-    background-color: #74a3a3;
-    color: #d4d4d4;
+    background-color: #858585;
+    color: #000000;
 }
 
 popover,
 menu,
 tooltip {
-    background-color: #262626;
-    color: #d4d4d4;
+    background-color: #000000;
+    color: #858585;
+    border: 1px solid #000000;
+}
+
+/* Highlight khi hover trong danh sách gợi ý Ctrl + L và Sidebar */
+popover row:hover,
+popover list row:hover,
+popover treeview.view:hover,
+window.popup treeview.view:hover,
+window.popup row:hover,
+placessidebar row:hover,
+treeview.view:hover {
+    background-color: #858585;
+    color: #000000;
+}
+
+/* 4. Chọn 1 file, chọn NHIỀU file (Ctrl+Click / kéo chuột) và mất focus */
+filechooser treeview.view:selected,
+filechooser treeview.view:selected:focus,
+filechooser treeview.view:selected:backdrop,
+treeview.view:selected,
+treeview.view:selected:focus,
+treeview.view:selected:backdrop,
+treeview.view row:selected,
+treeview.view cell:selected,
+row:selected,
+row:selected:focus,
+row:selected:backdrop,
+iconview:selected,
+iconview cell:selected {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: #858585;
+    color: #000000;
+}
+
+/* Đảm bảo chữ bên trong dòng đang chọn hoặc hover không bị tối */
+row:selected label,
+row:hover label,
+popover row:hover label {
+    background-color: transparent;
+    color: #000000;
+}
+
+/* 5. Khung chữ nhật khi kéo chuột chọn nhiều file (Rubberband) */
+rubberband,
+.rubberband,
+.view rubberband,
+treeview.view rubberband,
+iconview rubberband,
+filechooser rubberband,
+scrolledwindow rubberband {
+    background-color: alpha(#858585, 0.25);
     border: 1px solid #858585;
 }
 
-/* 4. Thanh cuộn (Scrollbar) tối giản */
+/* 6. Thanh cuộn (Scrollbar) và đường ngăn cách */
 scrollbar slider {
-    background-color: #858585;
+    background-color: #262626;
     border-radius: 0px;
 }
 
 scrollbar slider:hover {
-    background-color: #b5b5b5;
+    background-color: #858585;
 }
 
-/* 5. Đường viền ngăn cách */
 separator,
 paned > separator {
-    background-color: #262626;
-    color: #262626;
+    background-color: #000000;
+    color: #000000;
 }
 
-/* 6. Ghi đè màu tím của theme Catppuccin trên thanh đường dẫn (Path Bar) */
+/* 7. Thanh Header Stack & Path Bar */
+dialog.background filechooser box stack,
+dialog.background filechooser box stack > box,
+window.background filechooser box stack,
+window.background filechooser box stack > box {
+    background-color: #000000;
+    background-image: none;
+    box-shadow: none;
+    color: #b5b5b5;
+}
+
+dialog.background filechooser stack pathbar > button,
+window.background filechooser stack pathbar > button,
 filechooser .path-bar button,
-filechooser .path-bar-toggle,
-pathbar > button,
-.path-bar > button {
-    background-color: #262626;
+pathbar > button {
+    background-color: #000000;
     background-image: none;
     color: #d4d4d4;
-    border: 1px solid #858585;
+    border: 1px solid #000000;
     box-shadow: none;
     text-shadow: none;
 }
 
-/* Xử lý trạng thái khi thư mục đang được chọn (active/checked) */
+/* Thư mục hiện tại (pwd) đang mở: nền sáng, chữ tối tương phản */
+dialog.background filechooser stack pathbar > button:checked,
+window.background filechooser stack pathbar > button:checked,
 filechooser .path-bar button:checked,
-filechooser .path-bar button:active,
-filechooser .path-bar-toggle:checked,
-pathbar > button:checked,
-pathbar > button:active,
-.path-bar > button:checked {
-    background-color: #3d3d3d;
-    color: #b5b5b5; /* Hoặc COLOR15 nếu muốn chữ sáng hơn */
-    border-color: #b5b5b5;
+pathbar > button:checked {
+    background-color: #858585;
+    color: #000000;
+    border: 1px solid #858585;
 }
 
-/* Hiệu ứng hover */
+dialog.background filechooser stack pathbar > button:checked label,
+window.background filechooser stack pathbar > button:checked label,
+pathbar > button:checked label {
+    background-color: transparent;
+    color: #000000;
+}
+
+/* Hover trên Path Bar */
+dialog.background filechooser stack pathbar > button:hover,
+window.background filechooser stack pathbar > button:hover,
 filechooser .path-bar button:hover,
-pathbar > button:hover,
-.path-bar > button:hover {
-    background-color: #3d3d3d;
-    border-color: #b5b5b5;
+pathbar > button:hover {
+    background-color: #b5b5b5;
+    color: #000000;
+    border: 1px solid #b5b5b5;
 }
 
-/* 7. Đập tan màu tím trên thanh đường dẫn File Chooser */
-filechooser pathbar button,
-filechooser .path-bar button,
-pathbar > button,
-.path-bar > button,
-.pathbar > button,
-filechooser button:checked,
-filechooser button:active {
-    background-color: #3d3d3d !important;
-    background-image: none !important;
-    color: #d4d4d4 !important;
-    border-color: #858585 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
+dialog.background filechooser stack pathbar > button:hover label,
+dialog.background filechooser stack pathbar > button:hover image,
+window.background filechooser stack pathbar > button:hover label,
+window.background filechooser stack pathbar > button:hover image,
+pathbar > button:hover label,
+pathbar > button:hover image {
+    background-color: transparent;
+    color: #000000;
 }
-
-/* Đề phòng app dùng dropdown/menubutton thay cho pathbar (GTK4) */
-filechooser menubutton > button:checked,
-filechooser dropdown > button:checked {
-    background-color: #3d3d3d !important;
-    background-image: none !important;
-    color: #d4d4d4 !important;
-}
-
-window { background-color: red !important; }

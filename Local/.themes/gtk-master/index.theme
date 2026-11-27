@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=gtk-master
+Comment=Custom GTK Theme managed by Stow
+
+[X-GNOME-Metatheme]
+GtkTheme=gtk-master
+IconTheme=minimal
