@@ -10,9 +10,11 @@ fcitx5 &
 export XDG_CURRENT_DESKTOP=dwm
 export XDG_SESSION_TYPE=x11
 
-# optional portals (chỉ nếu cần flatpak)
+# optional portals (chỉ nếu cần flatpak) -------------------------------------------------------------------------------------------
 /usr/lib/xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal-gtk &
+#systemctl --user import-environment DEFAULT_TERMINAL DEFAULT_EDITOR DEFAULT_BROWSER DEFAULT_FILE_MANAGER DISPLAY XAUTHORITY
+# ----------------------------------------------------------------------------------------------------------------------------------
 
 # wallpaper
 cd "$HOME/Applications/Config/MyScripts/DesktopBackground"
@@ -28,6 +30,5 @@ dwmblocks &
 # start window manager
 picom -b
 
-systemctl --user import-environment DEFAULT_TERMINAL DEFAULT_EDITOR DEFAULT_BROWSER DEFAULT_FILE_MANAGER DISPLAY XAUTHORITY
 
 exec dwm
