@@ -22,6 +22,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias op="~/Applications/Config/MyScripts/OpenFile/openfile.sh"
+alias config="cd ~/Applications/Config"
+alias linhtinh="cd ~/Downloads/linhtinh"
 
 # PATH
 # export PATH="$HOME/Applications/Linux/Miniconda/bin:$PATH"  # commented out by conda initialize
