@@ -25,6 +25,8 @@ alias op="~/Applications/Config/MyScripts/OpenFile/openfile.sh"
 alias config="cd ~/Applications/Config"
 alias linhtinh="cd ~/Downloads/linhtinh"
 alias bglist="cd ~/Applications/Config/MyScripts/DesktopBackground/artlist/"
+alias yay='GIT_PAGER="$HOME/.local/bin/yay-audit" yay'
+
 
 # PATH
 # export PATH="$HOME/Applications/Linux/Miniconda/bin:$PATH"  # commented out by conda initialize
