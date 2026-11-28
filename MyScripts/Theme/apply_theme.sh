@@ -6,6 +6,7 @@ BG_DIR="$HOME/Applications/Config/MyScripts/DesktopBackground"
 SUBLIME_DIR="$HOME/.config/sublime-text/Packages/User"
 GTK3_DIR="$HOME/Applications/Config/Local/.config/gtk-3.0"
 GTK4_DIR="$HOME/Applications/Config/Local/.config/gtk-4.0"
+WATERFOX_DIR="$HOME/Applications/Config/Local/.waterfox/mainprofile/chrome"
 
 
 
@@ -20,3 +21,4 @@ envsubst < "$THEME_DIR/sublime.color-scheme.template" > "$SUBLIME_DIR/MyDynamicT
 envsubst < "$THEME_DIR/sublime.theme.template" > "$SUBLIME_DIR/Adaptive.sublime-theme"
 envsubst < "$THEME_DIR/gtk.css.template" > "$GTK3_DIR/gtk.css"
 envsubst < "$THEME_DIR/gtk.css.template" > "$GTK4_DIR/gtk.css"
+envsubst < "$THEME_DIR/waterfox-colors.css.template" > "$WATERFOX_DIR/theme-colors.css"

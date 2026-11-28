@@ -1,0 +1,320 @@
+/* AUTO-GENERATED from colors.sh */
+:root {
+  /* 4 màu gốc */
+  --tf-bg:        ${BACKGROUND}     !important;
+  --tf-border:    ${SUB_BACKGROUND} !important;
+  --tf-accent:    ${HIGHLIGHT}      !important;
+
+  /* ==== LWT vars — quan trọng nhất ==== */
+  --lwt-accent-color:                    ${BACKGROUND}     !important;
+  --lwt-accent-color-inactive:           ${BACKGROUND}     !important;
+  --lwt-text-color:                      ${HIGHLIGHT}      !important;
+  --lwt-selected-tab-background-color:   ${SUB_BACKGROUND} !important;
+  --lwt-toolbar-field-background-color:  ${BACKGROUND}     !important;
+  --lwt-toolbar-field-color:             ${HIGHLIGHT}      !important;
+  --lwt-toolbar-field-border-color:      ${SUB_BACKGROUND} !important;
+  --lwt-toolbarbutton-icon-fill:         ${HIGHLIGHT}      !important;
+  --lwt-toolbarbutton-icon-fill-attention: ${HIGHLIGHT}    !important;
+  --lwt-toolbarbutton-hover-background:  ${SUB_BACKGROUND} !important;
+  --lwt-toolbarbutton-active-background: ${SUB_HIGHLIGHT}  !important;
+
+  /* ==== Firefox toolbar vars ==== */
+  --toolbar-bgcolor:                        ${BACKGROUND}     !important;
+  --toolbar-color:                          ${HIGHLIGHT}      !important;
+  --toolbar-field-background-color:         ${BACKGROUND}     !important;
+  --toolbar-field-color:                    ${HIGHLIGHT}      !important;
+  --toolbar-field-focus-background-color:   ${BACKGROUND}     !important;
+  --toolbar-field-focus-color:              ${HIGHLIGHT}      !important;
+  --toolbar-field-border-color:             ${SUB_BACKGROUND} !important;
+  --toolbarbutton-icon-fill:                ${HIGHLIGHT}      !important;
+  --toolbarbutton-icon-fill-opacity:        1 !important;
+
+  /* ==== Tabs ==== */
+  --tab-selected-bgcolor:        ${SUB_BACKGROUND} !important;
+  --tab-hover-background-color:  color-mix(in srgb, ${SUB_BACKGROUND} 60%, ${BACKGROUND}) !important;
+  --toolbarbutton-hover-background: var(--tab-hover-background-color) !important;
+  --button-background-color-active: var(--tab-hover-background-color) !important;
+
+  /* ==== Panels / menus ==== */
+  --panel-background:        ${BACKGROUND}     !important;
+  --panel-color:             ${HIGHLIGHT}      !important;
+  --panel-border-color:      ${SUB_HIGHLIGHT}  !important;
+  --arrowpanel-background:   ${BACKGROUND}     !important;
+  --arrowpanel-color:        ${HIGHLIGHT}      !important;
+  --arrowpanel-border-color: ${SUB_HIGHLIGHT}  !important;
+
+  /* ==== URL bar ==== */
+  --urlbar-box-bgcolor:        ${SUB_BACKGROUND} !important;
+  --urlbar-popup-url-color:    ${HIGHLIGHT}      !important;
+}
+
+
+/* Private */
+@-moz-document url("about:privatebrowsing") {
+  :root,
+  body {
+    /* nền + chữ */
+    --in-content-page-background: ${BACKGROUND}     !important;
+    --in-content-page-color:      ${HIGHLIGHT}      !important;
+    --in-content-text-color:      ${HIGHLIGHT}      !important;
+
+    /* hộp / viền */
+    --in-content-box-background:      ${BACKGROUND}     !important;
+    --in-content-box-background-odd:  ${SUB_BACKGROUND} !important;
+    --in-content-box-border-color:    ${SUB_BACKGROUND} !important;
+    --in-content-border-color:        ${SUB_BACKGROUND} !important;
+    --in-content-border-hover:        ${HIGHLIGHT}      !important;
+    --in-content-border-active:       ${HIGHLIGHT}      !important;
+
+    /* buttons */
+    --in-content-primary-button-background:          ${SUB_BACKGROUND} !important;
+    --in-content-primary-button-background-hover:    ${SUB_HIGHLIGHT}  !important;
+    --in-content-primary-button-background-active:   ${SUB_HIGHLIGHT}  !important;
+    --in-content-primary-button-text-color:          ${HIGHLIGHT}      !important;
+
+    --button-background-color:        ${SUB_BACKGROUND} !important;
+    --button-background-color-hover:  ${SUB_HIGHLIGHT}  !important;
+    --button-text-color:              ${HIGHLIGHT}      !important;
+
+    /* link */
+    --link-color:         ${HIGHLIGHT} !important;
+    --link-color-hover:   ${HIGHLIGHT} !important;
+    --link-color-active:  ${HIGHLIGHT} !important;
+
+    /* ép nền — quan trọng: tím được set ở đây trên FF 128 */
+    background-color: ${BACKGROUND} !important;
+    color: ${HIGHLIGHT} !important;
+  }
+
+  /* thanh search handoff */
+  .search-handoff-button,
+  #search-handoff-button {
+    background-color: ${BACKGROUND}     !important;
+    border-color:     ${SUB_BACKGROUND} !important;
+    color:            ${HIGHLIGHT}      !important;
+    box-shadow: none !important;
+  }
+  .search-handoff-button:not(.disabled):hover,
+  #search-handoff-button:not(.disabled):hover {
+    border-color: ${HIGHLIGHT} !important;
+  }
+
+  /* dòng info dưới cùng ("Private browsing...") */
+  .info,
+  .promo,
+  .private-browsing-info,
+  .private-browsing-info-text {
+    color: ${SUB_HIGHLIGHT} !important;
+  }
+
+  /* mask icon — giữ nguyên, chỉ chỉnh nếu bạn muốn */
+  /* .logo-and-wordmark .logo { filter: grayscale(1) brightness(1.2); } */
+}
+
+
+/* 1. Ép thanh công cụ trên cùng (Tab, URL, Bookmark) */
+:root[privatebrowsingmode="temporary"] {
+  --lwt-accent-color:                  ${BACKGROUND}     !important;
+  --lwt-accent-color-inactive:         ${BACKGROUND}     !important;
+  --toolbar-bgcolor:                   ${BACKGROUND}     !important;
+  --toolbar-field-background-color:    ${BACKGROUND}     !important;
+  --tab-selected-bgcolor:              ${SUB_BACKGROUND} !important;
+  --toolbar-field-focus-background-color: ${BACKGROUND}  !important;
+}
+
+/* Phủ định background-image để diệt gradient tím của thanh toolbar */
+:root[privatebrowsingmode="temporary"] #navigator-toolbox,
+:root[privatebrowsingmode="temporary"] #TabsToolbar,
+:root[privatebrowsingmode="temporary"] #nav-bar,
+:root[privatebrowsingmode="temporary"] #PersonalToolbar,
+:root[privatebrowsingmode="temporary"] #browser,
+:root[privatebrowsingmode="temporary"] .browser-toolbar {
+  background-color: ${BACKGROUND} !important;
+  background-image: none !important;
+}
+
+/* Tab đang chọn */
+:root[privatebrowsingmode="temporary"] .tabbrowser-tab[selected="true"] .tab-background {
+  background-color: ${SUB_BACKGROUND} !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Ô nhập URL */
+:root[privatebrowsingmode="temporary"] #urlbar-background {
+  background-color: ${BACKGROUND} !important;
+  border-color: ${SUB_BACKGROUND} !important;
+}
+
+@-moz-document url("about:privatebrowsing") {
+  /* Diệt viền tím (có thể là border, outline hoặc box-shadow) */
+  .info, 
+  .info-inner, 
+  .private-browsing-info,
+  #private-browsing-info,
+  .container {
+    background-color: ${SUB_BACKGROUND} !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Nếu Waterfox dùng pseudo-element (::before/::after) để vẽ viền */
+  .info::before,
+  .info::after {
+    display: none !important;
+  }
+
+  /* Tút lại viền bằng nét mảnh của riêng bạn cho đẹp */
+  .info {
+    border: 1px solid ${SUB_HIGHLIGHT} !important;
+  }
+
+  /* Chữ bên trong */
+  .info * {
+    color: ${HIGHLIGHT} !important;
+  }
+  .info a {
+    color: ${HIGHLIGHT} !important;
+    text-decoration: underline !important;
+  }
+
+  /* Ô search to ở giữa */
+  .search-inner-wrapper,
+  #search-handoff-button {
+    background-color: ${BACKGROUND} !important;
+    border-color: ${SUB_HIGHLIGHT} !important;
+    color: ${HIGHLIGHT} !important;
+  }
+}
+
+:root[privatebrowsingmode="temporary"] #navigator-toolbox,
+:root[privatebrowsingmode="temporary"] #titlebar {
+  background-color: ${BACKGROUND} !important;
+  background-image: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Băm nát cái class .chrome-background (nếu có) đang tô màu tím */
+:root[privatebrowsingmode="temporary"] .chrome-background {
+  background-color: ${BACKGROUND} !important;
+  background-image: none !important;
+  border: none !important;
+}
+
+/* Đảm bảo thanh tab bên trong vẫn có màu nền chuẩn */
+:root[privatebrowsingmode="temporary"] #TabsToolbar {
+  background-color: ${BACKGROUND} !important;
+}
+
+/* Đảm bảo tab đang chọn vẫn có màu xám phân biệt */
+:root[privatebrowsingmode="temporary"] .tabbrowser-tab[selected="true"] .tab-background {
+  background-color: ${SUB_BACKGROUND} !important;
+  border: none !important;
+  outline: none !important;
+}
+
+
+/* 1. Băm nát mọi thứ có thể vẽ ra màu tím */
+:root[privatebrowsingmode="temporary"] {
+  --toolbar-bgcolor: #000000 !important;
+  --lwt-accent-color: #000000 !important;
+  --lwt-accent-color-inactive: #000000 !important;
+  --chrome-window-border: transparent !important;
+  --tabs-border-color: transparent !important;
+}
+
+:root[privatebrowsingmode="temporary"] #navigator-toolbox,
+:root[privatebrowsingmode="temporary"] #titlebar,
+:root[privatebrowsingmode="temporary"] #browser,
+:root[privatebrowsingmode="temporary"] #main-window {
+  /* Dùng background viết tắt để đè cả background-color lẫn background-image */
+  background: ${BACKGROUND} !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 2. Giết chết mọi thẻ ảo (pseudo-element) nếu Waterfox dùng nó để vẽ viền */
+:root[privatebrowsingmode="temporary"] #navigator-toolbox::before,
+:root[privatebrowsingmode="temporary"] #navigator-toolbox::after,
+:root[privatebrowsingmode="temporary"] #titlebar::before,
+:root[privatebrowsingmode="temporary"] #titlebar::after,
+:root[privatebrowsingmode="temporary"] #browser::before,
+:root[privatebrowsingmode="temporary"] #browser::after {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* 3. XÓA KHOẢNG TRỐNG (margin) CỦA TEXTFOX ĐỂ KHÔNG LỘ NỀN */
+/* Thanh tab sẽ giãn sát ra mép trên, đè lên cái viền tím */
+:root[privatebrowsingmode="temporary"] #TabsToolbar {
+  margin: 0 !important;
+  padding-top: 4px !important; /* Giữ lại 1 xíu cho đẹp */
+  border-color: ${BACKGROUND} !important; /* Xóa viền của textfox */
+  border-radius: 0 !important;
+}
+
+@-moz-document url("about:privatebrowsing") {
+  
+  /* 1. Băm nát mọi thứ vẽ ra màu tím (Nền xám, viền tím, bóng đổ) */
+  .container, 
+  .main-content,
+  .search-wrapper,
+  .info-border,
+  .info,
+  .private-browsing-info {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  /* 2. Chỉ tút lại cái hộp chứa chữ cho hợp DWM (Xám mờ, viền xám mỏng) */
+  .info, 
+  .private-browsing-info {
+    background-color: ${SUB_BACKGROUND} !important;
+    border: 1px solid ${SUB_HIGHLIGHT} !important; 
+    border-radius: 0 !important;
+    padding: 16px !important;
+  }
+
+  /* 3. Đảm bảo chữ trong hộp sáng rõ */
+  .info *, .private-browsing-info * {
+    color: ${HIGHLIGHT} !important;
+  }
+  .info a, .private-browsing-info a {
+    color: ${HIGHLIGHT} !important;
+    text-decoration: underline !important;
+  }
+
+  /* 4. Thanh Search */
+  .search-handoff-button,
+  #search-handoff-button {
+    background-color: ${BACKGROUND} !important;
+    border: 1px solid ${SUB_HIGHLIGHT} !important;
+    color: ${HIGHLIGHT} !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* 5. Lột màu tím của Logo Waterfox (Ép sang Trắng/Đen) */
+  .logo-and-wordmark .logo,
+  .wordmark-image,
+  #private-browsing-mask,
+  .logo {
+    filter: grayscale(100%) brightness(200%) !important; 
+  }
+  
+  /* 6. Đổi màu chữ "Waterfox" */
+  .wordmark, .wordmark-text {
+    color: ${HIGHLIGHT} !important;
+    fill: ${HIGHLIGHT} !important;
+  }
+}

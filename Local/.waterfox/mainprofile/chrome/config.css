@@ -1,0 +1,95 @@
+/* path: chrome/config.css */
+:root {
+  --tf-display-horizontal-tabs: block; /* Hiện lại các tab hàng ngang */
+  --tf-display-titles: none;
+  --tf-display-nav-buttons: flex !important;
+}
+
+
+/* path: chrome/config.css */
+
+:root {
+  /* 1. ĐƯA KHOẢNG CÁCH VÀ VIỀN VỀ 0 TUYỆT ĐỐI */
+  --tf-navbar-margin: 0px !important;       /* Xóa margin ngoài của thanh điều hướng */
+  --tf-navbar-padding: 2px 4px !important;  /* Thu hẹp padding trong của thanh điều hướng */
+  --tf-border-width: 0px !important;        /* Triệt tiêu độ dày đường viền giữa các block */
+  --tf-rounding: 0px !important;            /* Ép phẳng hoàn toàn, xóa bỏ bo góc */
+  
+  /* 2. THU NHỎ KÍCH THƯỚC ĐỂ TIẾT KIỆM DIỆN TÍCH (GIỐNG DWMBAR) */
+  --tf-font-size: 11px !important;          /* Thu nhỏ cỡ chữ hệ thống */
+  --tab-min-height: 22px !important;        /* Ép độ cao thanh tab mỏng dính */
+  --urlbar-container-height: 24px !important;/* Ép độ cao thanh địa chỉ siêu mỏng */
+  
+  /* 3. HIỆN LẠI NÚT ĐIỀU HƯỚNG VÀ TAB THEO YÊU CẦU TRƯỚC */
+  --tf-display-titles: none !important;       /* Ẩn hoàn toàn các chữ phiền toái (navbar, tabs...) */
+  --tf-display-horizontal-tabs: block !important; /* Hiện lại thanh tab ngang */
+  --tf-display-nav-buttons: flex !important;  /* Hiện lại nút Back / Forward */
+  --tf-display-window-controls: none !important; /* Ẩn nút X _ [] vì dwm quản lý bằng phím tắt */
+}
+
+/* ==========================================================================
+   ÉP TRÀN VIỀN 100% (ANTI-PADDING & ANTI-BORDER CHO DWM)
+   ========================================================================== */
+
+/* Triệt tiêu khung viền vuông nội bộ và khoảng hở của textfox */
+#browser,
+#navigator-toolbox,
+#tabbrowser-tabbox,
+#appcontent,
+.browserContainer,
+browser[type="content"],
+.split-view-panel,
+#viewSource {
+  margin: 0px !important;
+  padding: 0px !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0px !important;
+}
+
+/* Xóa bỏ hoàn toàn khoảng trống ở các góc cửa sổ lớp ngoài cùng */
+#main-window,
+body {
+  padding: 0px !important;
+  margin: 0px !important;
+  border: none !important;
+}
+
+/* Thu nhỏ khoảng cách các nút và icon bên trong thanh URL để không bị thô */
+#urlbar-background {
+  border: 1px solid var(--arrowpanel-border-color, #333) !important;
+  border-radius: 0px !important;
+}
+
+.tabbrowser-tab {
+  padding-inline: 4px !important; /* Thu hẹp chiều ngang của mỗi tab */
+}
+
+/* path: chrome/config.css */
+
+/* 1. Ép thanh Bookmarks mỏng dính, xóa bỏ hoàn toàn khoảng đệm thừa */
+#PersonalToolbar {
+  padding: 0px 4px !important;      /* Thu hẹp khoảng đệm trên/dưới về 0 */
+  margin: 0px !important;           /* Xóa margin ngoài */
+  min-height: 22px !important;      /* Ép độ cao tối thiểu mỏng như thanh tab */
+  max-height: 22px !important;
+  border: none !important;          /* Xóa viền */
+}
+
+/* 2. Thu nhỏ kích thước của từng nút bookmark bên trong */
+#personal-bookmarks .bookmark-item {
+  padding: 2px 4px !important;      /* Thu nhỏ khoảng cách giữa các chữ dấu trang */
+  margin: 0px !important;
+}
+
+/* 3. Thu nhỏ icon (favicon) của các trang web trên thanh bookmark */
+#personal-bookmarks .toolbarbutton-icon {
+  width: 12px !important;           /* Hạ kích thước icon xuống 12px cho gọn */
+  height: 12px !important;
+  margin-inline-end: 4px !important;/* Thu hẹp khoảng cách giữa icon và chữ */
+}
+
+/* 4. Hạ cỡ chữ của Bookmarks đồng bộ với thanh địa chỉ */
+#personal-bookmarks .toolbarbutton-text {
+  font-size: 11px !important;       /* Cỡ chữ siêu nhỏ gọn */
+}

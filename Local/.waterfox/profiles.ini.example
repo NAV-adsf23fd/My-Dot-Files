@@ -1,0 +1,9 @@
+[General]
+StartWithLastProfile=1
+Version=2
+
+[Profile0]
+Name=mainprofile
+IsRelative=1
+Path=mainprofile
+Default=1
