@@ -6,18 +6,16 @@
 #include <X11/Xatom.h>
 #include "theme.h"
 
-// Hàm cấp phát một pixel màu từ tên màu (ví dụ: "green" hoặc "#00FF00")
 unsigned long get_color_pixel(Display *dpy, int screen, const char *color_name) {
     XColor color, exact;
     Colormap cmap = DefaultColormap(dpy, screen);
     if (XAllocNamedColor(dpy, cmap, color_name, &color, &exact)) {
         return color.pixel;
     }
-    fprintf(stderr, "Cảnh báo: Không thể cấp phát màu '%s'. Sử dụng màu trắng.\n", color_name);
+    fprintf(stderr, "[WARNING]: Cannot allocate '%s'. Using White.\n", color_name);
     return WhitePixel(dpy, screen);
 }
 
-// Hàm đọc ASCII art từ một file
 char **read_ascii_lines_from_file(const char *filename, int *line_count) {
     FILE *fp = fopen(filename, "r");
     if (fp == NULL) return NULL;
@@ -45,20 +43,18 @@ char **read_ascii_lines_from_file(const char *filename, int *line_count) {
     return lines;
 }
 
-// Hàm dọn dẹp bộ nhớ mảng các dòng ASCII
 void free_ascii_lines(char **lines, int line_count) {
     if (lines == NULL) return;
     for (int i = 0; i < line_count; i++) free(lines[i]);
     free(lines);
 }
 
-// Hàm tính toán chiều rộng tối đa (ĐÃ SỬA LỖI BADFONT)
+// Fixed BADFONT error
 int calculate_max_width(XFontStruct *font_info, char **lines, int line_count) {
     if (!font_info) return 0;
 
     int max_width = 0;
     for (int i = 0; i < line_count; i++) {
-        // Dùng font đã tải để đo chiều rộng chính xác từng dòng
         int current_width = XTextWidth(font_info, lines[i], strlen(lines[i]));
         if (current_width > max_width) max_width = current_width;
     }
@@ -78,7 +74,7 @@ int main(int argc, char *argv[]) {
 
     dpy = XOpenDisplay(NULL);
     if (!dpy) {
-        fprintf(stderr, "Lỗi: Không thể kết nối tới X server.\n");
+        fprintf(stderr, "[ERROR]: Cannot conect X server.\n");
         exit(1);
     }
 
@@ -90,7 +86,7 @@ int main(int argc, char *argv[]) {
     int ascii_line_count = 0;
     char **ascii_lines = read_ascii_lines_from_file(filename, &ascii_line_count);
     if (ascii_lines == NULL) {
-        fprintf(stderr, "Lỗi: Không thể đọc file ASCII art '%s'.\n", filename);
+        fprintf(stderr, "[ERROR]: Cannot read ASCII art '%s'.\n", filename);
         XCloseDisplay(dpy);
         exit(1);
     }
@@ -98,22 +94,19 @@ int main(int argc, char *argv[]) {
     pmap = XCreatePixmap(dpy, root, width, height, DefaultDepth(dpy, screen));
     gc = XCreateGC(dpy, pmap, 0, &values);
 
- // Tô nền tùy chọn
-    XSetForeground(dpy, gc, get_color_pixel(dpy, screen, bg_color)); // <--- THAY MÃ MÀU NỀN TẠI ĐÂY
+    XSetForeground(dpy, gc, get_color_pixel(dpy, screen, bg_color));
     XFillRectangle(dpy, pmap, gc, 0, 0, width, height);
 
-    // Cấp màu xanh Matrix cho chữ
     XSetForeground(dpy, gc, get_color_pixel(dpy, screen, fg_color));
 
-    // --- FIX BADFONT: Tải font rõ ràng từ X Server ---
+    // FIX BADFONT
     XFontStruct *font_info = XLoadQueryFont(dpy, "fixed");
     if (!font_info) {
-        fprintf(stderr, "Cảnh báo: Không tải được font 'fixed'. Hình sẽ không được căn giữa hoàn hảo.\n");
+        fprintf(stderr, "[WARNING]: Cannot load \"fixed\" font.\n");
     } else {
-        XSetFont(dpy, gc, font_info->fid); // Ép cọ vẽ dùng font này
+        XSetFont(dpy, gc, font_info->fid);
     }
 
-    // Tính toán căn giữa dựa trên font đã tải
     int line_height = 15;
     int art_height = ascii_line_count * line_height;
     int art_width = calculate_max_width(font_info, ascii_lines, ascii_line_count);
@@ -121,7 +114,6 @@ int main(int argc, char *argv[]) {
     int art_x = (width - art_width) / 2;
     int art_y = (height - art_height) / 2;
 
-    // Vẽ từng dòng chữ
     for (int i = 0; i < ascii_line_count; i++) {
         XDrawString(dpy, pmap, gc, art_x, art_y + (i * line_height), ascii_lines[i], strlen(ascii_lines[i]));
     }
@@ -139,14 +131,14 @@ int main(int argc, char *argv[]) {
     XClearWindow(dpy, root);
     XFlush(dpy);
 
-    // Dọn dẹp an toàn
+    // clean
     if (font_info) {
-        XFreeFont(dpy, font_info); // Giải phóng đúng font ID
+        XFreeFont(dpy, font_info); 
     }
     XFreeGC(dpy, gc);
     free_ascii_lines(ascii_lines, ascii_line_count);
     XCloseDisplay(dpy);
 
-    printf("Thành công: Đã vẽ ASCII Art lên nền!\n");
+    printf("[SUCCESS] ");
     return 0;
 }
