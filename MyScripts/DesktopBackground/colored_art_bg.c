@@ -118,10 +118,29 @@ int main(int argc, char *argv[]) {
         XDrawString(dpy, pmap, gc, art_x, art_y + (i * line_height), ascii_lines[i], strlen(ascii_lines[i]));
     }
 
-    // for picom
+    // for picom & clean old client
     Atom prop_root = XInternAtom(dpy, "_XROOTPMAP_ID", False);
     Atom prop_esetroot = XInternAtom(dpy, "ESETROOT_PMAP_ID", False);
 
+    Atom type;
+    int format;
+    unsigned long length, after;
+    unsigned char *data_root = NULL, *data_esetroot = NULL;
+
+    // kill old client
+    if (XGetWindowProperty(dpy, root, prop_root, 0L, 1L, False, AnyPropertyType,
+                           &type, &format, &length, &after, &data_root) == Success && type == XA_PIXMAP) {
+        if (XGetWindowProperty(dpy, root, prop_esetroot, 0L, 1L, False, AnyPropertyType,
+                               &type, &format, &length, &after, &data_esetroot) == Success && type == XA_PIXMAP) {
+            if (data_root && data_esetroot && *((Pixmap *)data_root) == *((Pixmap *)data_esetroot)) {
+                XKillClient(dpy, *((Pixmap *)data_root));
+            }
+        }
+    }
+    if (data_root) XFree(data_root);
+    if (data_esetroot) XFree(data_esetroot);
+
+    // new pixmap
     XChangeProperty(dpy, root, prop_root, XA_PIXMAP, 32, PropModeReplace, (unsigned char *)&pmap, 1);
     XChangeProperty(dpy, root, prop_esetroot, XA_PIXMAP, 32, PropModeReplace, (unsigned char *)&pmap, 1);
     // done
@@ -139,6 +158,6 @@ int main(int argc, char *argv[]) {
     free_ascii_lines(ascii_lines, ascii_line_count);
     XCloseDisplay(dpy);
 
-    printf("[SUCCESS] ");
+    printf("[SUCCESS]\n");
     return 0;
 }

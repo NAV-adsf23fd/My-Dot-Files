@@ -1,1 +1,1 @@
-artlist/donut.txt
+/home/van/Applications/Config/MyScripts/DesktopBackground/helloworld/Hello World_.txt
